@@ -100,6 +100,26 @@ button{font:inherit;color:inherit}
 .tick.last span{left:auto;right:0;transform:none}
 .prog-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--muted)}
 .prog-foot b{color:#fff}
+.meter .tick.ms{top:-4px;height:18px;width:2px;background:rgba(255,255,255,.55)}
+.meter .tick.ms.on{background:#fff;box-shadow:0 0 8px #fff}
+.meter .tick.ms span{top:-20px;font-family:var(--display);font-size:11px;font-weight:700;color:var(--muted)}
+.meter .tick.ms.on span{color:#fff}
+.meter .tick.ms.end{left:auto!important;right:-1px}
+.meter .tick.ms.end span{left:auto;right:0;transform:none}
+.gaps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px} 
+.hero-sum{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:flex-end;align-self:end;font-size:14px;color:var(--muted)}
+.hero-sum b{color:#fff}
+.hero-gaps{position:relative;padding:14px 32px 28px;margin-top:0;border-top:1px solid var(--edge)}
+@media (max-width:560px){.hero-gaps{padding:0 18px 20px}.hero-sum{justify-content:flex-start}}
+.gapc{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid var(--edge);min-width:0}
+.gapc .gh{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12px;color:var(--muted);white-space:nowrap}
+.gapc .gh i{display:inline-block;width:9px;height:10px;margin-right:6px;vertical-align:-1px;background:var(--c);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.gapc .gh em{font-style:normal;color:#fff;font-weight:600}
+.gapc .gv{margin-top:4px;font-family:var(--display);font-weight:700;font-size:clamp(16px,1.7vw,20px);line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gapc .gs{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gapc.done{border-color:rgba(127,240,190,.55);background:rgba(57,217,138,.10)}
+.gapc.done .gv{color:#7FF0BE}
+@media (max-width:700px){.gaps{grid-template-columns:1fr;gap:8px}.gapc{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:9px 12px}.gapc .gh{grid-column:1}.gapc .gv{grid-column:2;grid-row:1/3;margin:0;text-align:right}.gapc .gs{grid-column:1}}
 .journey{display:block;width:100%;height:auto;margin-top:4px}
 .journey .lbl{font-family:var(--body);font-size:13px;fill:#C3CCF5}
 .journey .lbl.on{fill:#fff;font-weight:600}
@@ -117,6 +137,7 @@ button{font:inherit;color:inherit}
 .who{display:flex;align-items:center;gap:10px;min-width:0}
 .who-txt{min-width:0}
 .who-txt b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who-txt b:has(.mvp){white-space:normal;overflow:visible}
 .who-txt span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rank{flex:none;width:24px;text-align:right;font-family:var(--display);font-weight:700;color:var(--dim)}
 .rank.top{color:var(--gold)}
@@ -296,9 +317,50 @@ tr.apps>td>table{animation:dropIn .35s cubic-bezier(.2,.8,.2,1) both}
   .hero-top,.hero-mid{grid-template-columns:1fr}
   .cd-label{text-align:left}
 }
+/* ---------- Khối cấp trung tâm / phòng / team / năm ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 4px 12px;font-family:var(--display);font-weight:600;font-size:15px;color:var(--ice)}
+.sect i{display:grid;place-items:center;width:26px;height:29px;font-style:normal;font-size:13px;color:#fff;background:linear-gradient(135deg,#3D7BFF,#7B6BFF);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.sect::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--edge2),transparent)}
+.lane.ext{grid-template-columns:220px 1fr 196px}
+.lane-foot{grid-column:2;display:flex;flex-wrap:wrap;gap:6px;margin:-2px 0 4px}
+.gchip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;color:var(--muted);background:rgba(255,255,255,.06);border:1px solid var(--edge);white-space:nowrap}
+.gchip i{width:8px;height:9px;background:var(--c);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.gchip strong{color:#fff;font-weight:600}
+.gchip.ok{border-color:rgba(127,240,190,.5);color:#7FF0BE}
+.gchip.aw{border-color:rgba(255,201,77,.45)}
+.ctk{position:absolute;top:36px;width:2px;height:26px;border-radius:2px;transform:translateX(-50%);background:rgba(255,255,255,.35)}
+.ctk.on{background:#fff;box-shadow:0 0 6px #fff}
+.ctk span{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:var(--muted);white-space:nowrap}
+.ctk.on span{color:#fff}
+.unit{position:relative;width:44px;height:48px;display:grid;place-items:center;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);font-family:var(--display);font-weight:700;font-size:13px;color:#fff;background:linear-gradient(135deg,#3D7BFF,#7B6BFF);z-index:2}
+.unit.sm{width:32px;height:35px;font-size:11px}
+.unit svg{width:56%;height:56%}
+.who-txt span.mvp,.mvp{display:inline-flex;vertical-align:1px;align-items:center;gap:5px;margin-left:6px;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:700;color:#10195A;background:linear-gradient(135deg,#FFE08A,#FFC94D)}
+.lane.ext .who-txt b,.lane.ext .who-txt span{white-space:normal;overflow:visible}
+.lane.ext .val .gap{white-space:normal}
+.ctbl td,.ctbl th{padding:9px 12px}
+.ctbl tr.lv-center td{background:rgba(61,123,255,.16);font-weight:700}
+.ctbl tr.lv-team td{background:rgba(255,255,255,.05);font-weight:600}
+.ctbl tr.lv-team td:first-child{padding-left:44px}
+.ctbl tr.lv-dept{cursor:pointer}
+.ctbl tr.lv-dept td{background:rgba(61,123,255,.14);font-weight:700}
+.ctbl tr.lv-dept:hover td{background:rgba(61,123,255,.22)}
+.ctbl .chev{display:inline-grid;place-items:center;width:22px;height:22px;margin-right:6px;border-radius:7px;background:rgba(255,255,255,.1);transition:transform .2s;vertical-align:middle}
+.ctbl .chev svg{width:12px;height:12px}
+.ctbl tr.lv-dept.closed .chev{transform:rotate(-90deg)}
+.ctbl tr.lv-team.hide{display:none}
+.ctbl .gpos{color:#fff;font-weight:600}
+.ctbl .gneg{color:#7FF0BE;font-weight:600}
+.ctbl .unit.sm{display:inline-grid;vertical-align:middle;margin-right:8px}
+.note-line{margin:10px 2px 0;font-size:12.5px;color:var(--muted)}
+.note-line strong{color:#fff}
 @media (max-width:820px){
   .lane{grid-template-columns:1fr 120px;gap:2px 10px}
   .lane .track{grid-column:1/-1;grid-row:2}
+  .lane.ext{grid-template-columns:1fr 132px}
+  .lane-foot{grid-column:1/-1}
+  .lane.ext .tag{white-space:normal;font-size:11px}
+  .gchip{font-size:11px;padding:2px 8px}
 }
 @media (max-width:560px){
   .wrap{padding:14px 12px 40px}
@@ -389,28 +451,38 @@ tr.apps>td>table{animation:dropIn .35s cubic-bezier(.2,.8,.2,1) both}
     </div>
     <div class="hero-mid">
       <div class="rev"><b id="heroRev">0</b><small id="heroVnd"></small><p id="heroCap">Doanh thu Trung tâm kinh doanh 3</p></div>
-      <div>
-        <div class="prog-top"><span id="heroTarget"></span><span id="heroPct"></span></div>
-        <div class="meter" id="heroMeter"><div class="meter-fill" id="heroFill"></div></div>
-        <div class="prog-foot"><span id="timeTxt" style="margin-left:auto"></span></div>
-      </div>
+      <div class="hero-sum"><span id="heroTarget"></span><span id="heroPct"></span><span id="timeTxt"></span></div>
+      <div id="heroMeter" hidden><div id="heroFill"></div></div>
     </div>
     <svg class="journey" id="journey" viewBox="0 0 1200 360" role="img" aria-label="Hành trình chuyển đổi số theo doanh thu của trung tâm"></svg>
+    <div class="gaps hero-gaps" id="heroGaps"></div>
   </article>
 
-  <!-- Khối 1: Commit quý 4 -->
+  <div class="sect"><i>1</i>Tiến độ commit quý 4: phòng và team</div>
   <article class="block" id="commitBlock">
     <div class="block-head">
-      <div><h2>Commit quý 4</h2><p class="sub" id="commitSub">Số commit lấy nguyên từ sheet "Commit toàn RC03" so với doanh thu đã đạt (DT Xét Performance). Commit toàn trung tâm cố định theo dòng RC 03, không phải tổng các phòng/team.</p></div>
-      <div class="seg" id="commitSeg" role="group" aria-label="Chọn cấp tổng hợp commit">
-        <button type="button" data-clv="dept" aria-pressed="false">Theo phòng</button>
-        <button type="button" data-clv="team" aria-pressed="true">Theo team</button>
-        <button type="button" data-clv="person" aria-pressed="false">Theo cá nhân</button>
-      </div>
+      <div><h2>Tiến độ commit quý 4</h2><p class="sub" id="commitSub">Doanh thu so với commit quý 4. Bấm tên phòng để mở hoặc gập.</p></div>
     </div>
-    <div class="sumrow" id="commitSum"></div>
-    <div class="scroll"><table id="commitTbl"></table></div>
+    <div class="scroll"><table id="commitTbl" class="ctbl"></table></div>
   </article>
+
+  <div class="sect"><i>2</i>Manager</div>
+  <article class="block" id="mgrBlock">
+    <div class="block-head">
+      <div><h2>Đường đua Manager quý 4</h2><p class="sub">Mốc theo % commit phòng: 50%, 80%, 100%.</p></div>
+    </div>
+    <div class="lanes" id="mgrRace"></div>
+  </article>
+
+  <div class="sect"><i>3</i>Leader</div>
+  <article class="block" id="leaderBlock">
+    <div class="block-head">
+      <div><h2>Đường đua Leader quý 4</h2><p class="sub">Mốc theo doanh thu quý của team: 1,2 tỷ, 1,8 tỷ, 2,5 tỷ.</p></div>
+    </div>
+    <div class="lanes" id="leaderRace"></div>
+  </article>
+
+  <div class="sect"><i>4</i>Cá nhân</div>
   <!-- Khối 2: Đường đua -->
   <article class="block">
     <div class="block-head">
@@ -619,10 +691,12 @@ const TIERS=[
   {name:'Goal',short:'Goal',color:'#FFC94D'},
   {name:'Out Performance',short:'Out',color:'#F06BD8'}
 ];
-const STAGES=[{at:0,name:'Xuất phát'},{at:.25,name:'Số hóa quy trình'},{at:.5,name:'Tự động hóa vận hành'},{at:.75,name:'AI Agent đồng hành'},{at:1,name:'Về đích'}];
+const STAGES=[{at:0,name:'Xuất phát'},{at:.5,name:'Tự động hóa vận hành'},{at:.8,name:'AI Agent đồng hành'},{at:1,name:'Về đích'}];
+/* Cột mốc tiến độ quý của trung tâm/phòng: hiện Gap tới từng mốc */
+const HERO_MILESTONES=[{p:.5,c:'#4FD1FF'},{p:.8,c:'#FFC94D'},{p:1,c:'#F06BD8'}];
 const AVA_BG=['linear-gradient(135deg,#3D7BFF,#7B6BFF)','linear-gradient(135deg,#7B6BFF,#C66BF0)','linear-gradient(135deg,#2FB8FF,#3D7BFF)','linear-gradient(135deg,#F06BD8,#8E7BFF)','linear-gradient(135deg,#39D98A,#2FB8FF)','linear-gradient(135deg,#FFB547,#F0708A)'];
 
-const S={staff:[],deals:[],commit:[],factor:CONFIG.QUARTER_FACTOR,dept:'all',period:'q',clv:'team',lv:'all',page:'bonus',updatedAt:null,first:true};
+const S={ytd:{},staff:[],deals:[],commit:[],factor:CONFIG.QUARTER_FACTOR,dept:'all',period:'q',clv:'team',lv:'all',page:'bonus',updatedAt:null,first:true};
 
 /* ---------- Tiện ích ---------- */
 const $=s=>document.querySelector(s);
@@ -725,7 +799,7 @@ async function load(manual){
     else{
       const j=await getData();
       if(!j.ok)throw new Error(j.error||'Lỗi không rõ');
-      S.staff=j.staff;S.deals=j.deals;S.commit=(j.commit&&j.commit.length)?j.commit:SEED.commit;if(j.config&&+j.config.quarterFactor)S.factor=+j.config.quarterFactor;
+      S.ytd=j.ytd||{};S.staff=j.staff;S.deals=j.deals;S.commit=(j.commit&&j.commit.length)?j.commit:SEED.commit;if(j.config&&+j.config.quarterFactor)S.factor=+j.config.quarterFactor;
     }
     S.updatedAt=new Date();render();if(manual)toast('Đã cập nhật dữ liệu mới nhất.');
   }catch(e){console.error(e);if(!S.staff.length){S.staff=SEED.staff;S.deals=SEED.deals;S.commit=SEED.commit;render();}toast('Chưa tải được dữ liệu từ Google Sheet. Thử bấm Làm mới sau ít phút.');}
@@ -797,7 +871,7 @@ function buildJourney(){
     <path d="M1080 220 Q1092 230 1104 220" fill="none" stroke="#8FE8FF" stroke-width="3" stroke-linecap="round"/>
     <ellipse cx="1046" cy="248" rx="9" ry="5" fill="#F59BE6" opacity=".55"/><ellipse cx="1138" cy="248" rx="9" ry="5" fill="#F59BE6" opacity=".55"/>
   </g>
-  <text x="1092" y="50" text-anchor="middle" class="lbl on">Về đích 100% KPI quý</text>
+  <text x="1092" y="50" text-anchor="middle" class="lbl on">Về đích 100% commit quý</text>
   <text x="70" y="352" text-anchor="middle" class="lbl">Xuất phát</text>
   <g id="core">
     <circle r="40" fill="url(#coreGlow)" class="pulse"/>
@@ -816,18 +890,27 @@ function renderHero(rows){
   $('#heroRev').textContent=money(rev);$('#heroVnd').textContent=vnd(rev);
   $('#heroCap').textContent=`Doanh thu ${who}`;
   $('#heroFill').style.width=Math.min(100,pct*100)+'%';
-  $('#heroTarget').innerHTML=`KPI quý 4: <b>${money(target)}</b>`;
+  $('#heroTarget').innerHTML=`Commit quý 4: <b>${money(target)}</b>`;
   $('#heroPct').innerHTML=`Đã đạt <b>${pctTxt(pct*100)}</b>`;
+  const meter=$('#heroMeter');meter.querySelectorAll('.tick.ms').forEach(e=>e.remove());
+  HERO_MILESTONES.forEach(m=>{const d=document.createElement('div');d.className='tick ms'+(pct>=m.p?' on':'')+(m.p>=1?' end':'');d.style.left=(m.p*100)+'%';d.innerHTML=`<span>${Math.round(m.p*100)}%</span>`;meter.appendChild(d);});
+  $('#heroGaps').innerHTML=HERO_MILESTONES.map(m=>{
+    const goal=target*m.p,gap=goal-rev,done=gap<=0,lbl=Math.round(m.p*100)+'%';
+    return `<div class="gapc ${done?'done':''}" style="--c:${m.c}" title="Mốc ${lbl}: ${vnd(goal)}${done?'':` | Gap: ${vnd(gap)}`}">
+      <div class="gh"><span><i></i>Mốc <em>${lbl}</em></span><span>${money(goal)}</span></div>
+      <div class="gv">${done?'Đã đạt':`Gap ${money(gap)}`}</div>
+      </div>`;
+  }).join('');
   const now=Date.now(),QS=new Date(CONFIG.QUARTER_START).getTime(),QE=new Date(CONFIG.QUARTER_END).getTime(),tp=Math.max(0,Math.min(1,(now-QS)/(QE-QS)));
   $('#timeTxt').innerHTML=`Thời gian quý đã qua <b>${pctTxt(tp*100)}</b>`;
 
   const path=$('#jpath'),L=path.getTotalLength();
-  $('#ms').innerHTML=STAGES.slice(1,4).map(s=>{const p=path.getPointAtLength(L*s.at),on=pct>=s.at;
+  $('#ms').innerHTML=STAGES.filter(s=>s.at>0&&s.at<1).map(s=>{const p=path.getPointAtLength(L*s.at),on=pct>=s.at;
     return `<g transform="translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})"><polygon points="${hexPts(0,0,21)}" fill="${on?'#3D7BFF':'rgba(22,32,106,.75)'}" stroke="${on?'#fff':'rgba(255,255,255,.45)'}" stroke-width="2"/>
     <text y="4.5" text-anchor="middle" class="pct" fill="#fff">${s.at*100}%</text><text y="45" text-anchor="middle" class="lbl ${on?'on':''}">${s.name}</text></g>`;}).join('');
   $('#agentGlow').setAttribute('opacity',pct>=1?.9:.35);
   $('#glowRect').setAttribute('opacity',(.35+.65*Math.min(1,pct)).toFixed(2));
-  $('#circuit').setAttribute('opacity',(.25+.7*Math.min(1,pct/.75)).toFixed(2));
+  $('#circuit').setAttribute('opacity',(.25+.7*Math.min(1,pct/.8)).toFixed(2));
   $('#coreTxt').textContent=pctTxt(pct*100);
   const trail=$('#jtrail'),f=Math.min(1,pct);
   const go=k=>{const p=path.getPointAtLength(L*k);$('#core').setAttribute('transform',`translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`);trail.style.strokeDasharray=`${L*k} ${L}`;};
@@ -846,7 +929,7 @@ function laneHTML(r,rank){
   const sc=scopeOf(),t=th(r,sc),v=valOf(r),max=Math.max(...t)*(sc==='q'?1.15:1.1)||1,k=tierOf(v,t),col=TIERS[k].color,pos=Math.min(100,v/max*100),kp=t[1]?v/t[1]*100:0,nx=nextTier(v,t);
   const marks=t.map((x,i)=>x>0?`<div class="mk" style="left:${x/max*100}%">${hexRing(v>=x?100:0,TIERS[i+1].color,{vb:'0 0 36 40',cx:18,cy:20,r:17,sw:2,fill:v>=x?.9:.7,fillColor:v>=x?TIERS[i+1].color:'#1C2780'})}<b style="color:${v>=x?'#10195A':TIERS[i+1].color}">${Math.round(x/t[1]*100)}%</b><span>${sc==='q'&&i===1?'Commit':TIERS[i+1].short}</span></div>`:'').join('');
   return `<div class="lane">
-    <div class="who"><span class="rank ${rank<=3&&v>0?'top':''}">${rank}</span>${avaHTML(r,'sm')}<div class="who-txt"><b>${esc(r.name)}</b><span>${esc(r.team)}, ${esc(r.level)}</span></div></div>
+    <div class="who"><span class="rank ${rank<=3&&v>0?'top':''}">${rank}</span>${avaHTML(r,'sm')}<div class="who-txt"><b>${esc(r.name)}${S.mvp&&S.mvp.has(r.username)?`<span class="mvp" title="Doanh thu cao nhất trung tâm ${periodName()}">${S.period==='q'?'MVP quý':'MVP T'+S.period}</span>`:''}</b><span>${esc(r.team)}, ${esc(r.level)}</span></div></div>
     <div class="track" aria-label="${esc(r.name)} đạt ${pctTxt(kp)} ${sc==='q'?'commit':'KPI'} ${periodName()}">
       <div class="rail"></div><div class="rail-fill" style="width:${pos}%;background:linear-gradient(90deg,rgba(255,255,255,0),${col});box-shadow:0 0 10px ${col}"></div>
       ${marks}
@@ -868,8 +951,10 @@ function renderRace(rows){
   const sorted=[...shown].sort((a,b)=>valOf(b)-valOf(a)||valOf(b)/(th(b,scopeOf())[1]||1)-valOf(a)/(th(a,scopeOf())[1]||1));
   $('#raceTitle').textContent=S.period==='q'?'Đường đua quý 4':`Đường đua tháng ${S.period}`;
   $('#raceSub').textContent=S.period==='q'
-    ?`Xếp hạng theo doanh thu cộng dồn tháng 10 đến 12. Mốc là commit quý của từng cá nhân (sheet Commit toàn RC03).`
-    :`Xếp hạng theo doanh thu tháng ${S.period}. Mốc tháng theo Level, lục giác sáng lên khi đã vượt qua.`;
+    ?`Xếp hạng theo doanh thu quý 4, mốc là commit cá nhân.`
+    :`Xếp hạng theo doanh thu tháng ${S.period}, mốc theo Level.`;
+  const all=allRows(),mx=Math.max(0,...all.map(valOf));
+  S.mvp=new Set(mx>0?all.filter(r=>valOf(r)===mx).map(r=>r.username):[]);
   $('#race').innerHTML=sorted.map((r,i)=>laneHTML(r,i+1)).join('')||'<p class="empty">Không có BC nào ở Level này.</p>';
   $('#raceLegend').innerHTML=S.period==='q'?'<span><i style="background:var(--t-kpi)"></i>Commit quý 4</span>'
     :'<span><i style="background:var(--t-backup)"></i>Back up</span><span><i style="background:var(--t-kpi)"></i>KPI</span><span><i style="background:var(--t-goal)"></i>Goal</span><span><i style="background:var(--t-out)"></i>Out Performance</span>';
@@ -915,42 +1000,27 @@ function commitModel(){
 }
 function pctColor(p){return p>=100?'#39D98A':p>=70?'#4FD1FF':p>=40?'#FFC94D':'#A9B8F5';}
 function renderCommit(){
-  const all=commitModel();
-  const QS=new Date(CONFIG.QUARTER_START).getTime(),QE=new Date(CONFIG.QUARTER_END).getTime(),tp=Math.max(0,Math.min(1,(Date.now()-QS)/(QE-QS)))*100;
+  const all=commitModel(),inScope=x=>S.dept==='all'||nk(x.dept)===nk(S.dept);
   const head=S.dept==='all'?all.find(x=>x.kind==='center'):all.find(x=>x.kind==='dept'&&nk(x.name)===nk(S.dept));
-  const scopeName=S.dept==='all'?'Trung tâm kinh doanh 3':S.dept;
-  if(head){
-    const gap=Math.max(0,head.commitQ-head.rev.q);
-    $('#commitSum').innerHTML=`<div class="stat"><span>Commit quý 4 · ${esc(scopeName)}</span><b>${money(head.commitQ)}</b><small>${vnd(head.commitQ)}</small></div>
-      <div class="stat"><span>Đã đạt</span><b>${money(head.rev.q)}</b><small>${vnd(head.rev.q)}</small></div>
-      <div class="stat ${head.pct>=tp?'ok':'warn'}"><span>Hoàn thành commit</span><b>${pctTxt(head.pct)}</b><small>Thời gian quý đã qua ${pctTxt(tp)}</small></div>
-      <div class="stat"><span>Còn thiếu so với commit</span><b>${money(gap)}</b><small>${gap?'Cần thêm để chạm commit':'Đã chạm commit'}</small></div>
-      ${(()=>{const cm=curMonth(),j=CONFIG.MONTHS.indexOf(cm),c=head.commitM[j],v=head.rev.m[cm];return `<div class="stat ${c&&v>=c?'ok':''}"><span>Tháng ${cm} (hiện tại)</span><b>${money(v)}</b><small>${c!=null?`Commit tháng ${money(c)} · đạt ${pctTxt(c?v/c*100:0)}`:'Chưa có commit tháng'}</small></div>`;})()}`;
-  }else $('#commitSum').innerHTML='';
-  document.querySelectorAll('#commitSeg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.clv===S.clv)));
-  // Bỏ qua dòng team không có thành viên nào (vd dòng CD)
-  let list=all.filter(x=>x.kind===S.clv&&!(x.kind==='team'&&!S.commit.some(p=>p.kind==='person'&&nk(p.team)===nk(x.name))&&!S.staff.some(s=>nk(s.team)===nk(x.name))));
-  if(S.dept!=='all')list=list.filter(x=>nk(x.dept)===nk(S.dept));
-  if(S.clv==='person')list.sort((a,b)=>b.pct-a.pct||b.rev.q-a.rev.q);
-  const extra=S.clv==='team'?'<th>Phòng</th>':S.clv==='person'?'<th>Team</th>':'';
-  const mHead=CONFIG.MONTHS.map(m=>`<th class="num">Tháng ${m}${m===curMonth()?' (hiện tại)':''}<br><span style="font-weight:500">đạt / commit</span></th>`).join('');
-  const body=list.map((x,i)=>{
-    const nameCell=x.kind==='person'
-      ?`<div class="who">${avaHTML(x.who||{username:x.name,name:x.name},'sm')}<div class="who-txt"><b>${esc(x.who?x.who.name:x.name)}</b><span>${esc(x.name)}</span></div></div>`
-      :`<b>${esc(x.name)}</b>`;
-    const ex=S.clv==='team'?`<td>${esc(x.dept)||'<span class="dash">–</span>'}</td>`:S.clv==='person'?`<td>${esc(x.team)}</td>`:'';
-    const gap=Math.max(0,x.commitQ-x.rev.q);
-    const months=CONFIG.MONTHS.map((m,j)=>{const c=x.commitM[j],v=x.rev.m[m];
-      if(!x.started[j])return `<td class="num mcell"><b class="dash">Sắp tới</b><span>/ ${c!=null?money(c):'–'}</span></td>`;
-      const p=c?v/c*100:null;
-      return `<td class="num mcell"><b>${money(v)}</b><span>/ ${c!=null?money(c):'–'}${p!=null?` · <span style="color:${pctColor(p)};display:inline">${pctTxt(p)}</span>`:''}</span></td>`;}).join('');
-    return `<tr class="${x.kind==='dept'?'lv-dept':''}"><td>${i+1}</td><td>${nameCell}</td>${ex}
-      <td class="num"><b>${x.commitQ?money(x.commitQ):'–'}</b></td><td class="num">${money(x.rev.q)}</td>
-      <td><div class="mini"><div class="bar"><i style="width:${Math.min(100,x.pct)}%;background:${pctColor(x.pct)}"></i></div>${pctTxt(x.pct)}</div></td>
-      <td class="num gapc">${gap?`<strong>${money(gap)}</strong>`:'Đã chạm'}</td>${months}</tr>`;}).join('');
-  $('#commitTbl').innerHTML=`<thead><tr><th>#</th><th>${S.clv==='dept'?'Phòng':S.clv==='team'?'Team':'Thành viên'}</th>${extra}
-    <th class="num">Commit quý 4</th><th class="num">Đã đạt</th><th>% đạt commit</th><th class="num">Còn thiếu</th>${mHead}</tr></thead>
-    <tbody>${body||`<tr><td colspan="12" class="empty">Chưa có số commit cho phạm vi này.</td></tr>`}</tbody>`;
+  const gapCell=x=>{if(!x.commitQ)return '<td class="num dash">–</td>';const g=x.commitQ-x.rev.q;return g>0?`<td class="num gpos">${money(g)}</td>`:`<td class="num gneg">Vượt ${money(-g)}</td>`;};
+  const prog=x=>x.commitQ?`<td><div class="mini"><div class="bar"><i style="width:${Math.min(100,x.pct)}%;background:${pctColor(x.pct)}"></i></div><b style="color:${pctColor(x.pct)}">${pctTxt(x.pct)}</b></div></td>`:'<td class="dash">–</td>';
+  const row=(x,cls,name)=>`<tr class="${cls}"><td>${name}</td><td class="num">${money(x.rev.q)}</td>${prog(x)}<td class="num">${x.commitQ?money(x.commitQ):'<span class="dash">–</span>'}</td>${gapCell(x)}</tr>`;
+  S.cClosed=S.cClosed||{};
+  const out=[],chev='<span class="chev"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span>';
+  const people=all.filter(x=>x.kind==='person');
+  const hasMem=x=>people.some(p=>nk(p.team)===nk(x.name))||S.staff.some(s=>nk(s.team)===nk(x.name));
+  const teams=all.filter(x=>x.kind==='team'&&hasMem(x));
+  const depts=all.filter(x=>x.kind==='dept'&&inScope(x));
+  depts.forEach(d=>{
+    const key=nk(d.name),closed=!!S.cClosed[key],tl=teams.filter(t=>nk(t.dept)===key);
+    out.push(row(d,'lv-dept'+(closed?' closed':''),`${chev}${unitIcon(deptShort(d.name),'sm')}${esc(d.name)}`).replace('<tr ',`<tr data-cdept="${esc(key)}" `));
+    tl.sort((a,b)=>b.pct-a.pct).forEach(t=>out.push(row(t,'lv-team'+(closed?' hide':''),esc(t.name))));
+  });
+  const orphan=teams.filter(t=>!depts.some(d=>nk(d.name)===nk(t.dept))&&inScope(t));
+  orphan.forEach(t=>out.push(row(t,'lv-team',esc(t.name))));
+  $('#commitTbl').innerHTML=`<thead><tr><th>Phòng / Team</th><th class="num">Doanh thu</th><th>Tiến độ</th><th class="num">Commit quý 4</th><th class="num">Gap</th></tr></thead>
+    <tbody>${out.join('')||'<tr><td colspan="5" class="empty">Chưa có số commit cho phạm vi này.</td></tr>'}</tbody>`;
+  const sc=$('#commitTbl').closest('.scroll');if(sc)sc.scrollLeft=0;
 }
 
 /* ===================== Trang TỔNG HỢP KHÁCH HÀNG KAM ===================== */
@@ -1256,11 +1326,93 @@ function renderAwards(){
     :`<tr><td colspan="7" class="empty">Chưa có cá nhân / team đạt giải.</td></tr>`}</tbody>`;
 }
 
+
+/* ===================== Cấp trung tâm / phòng / team / năm ===================== */
+/* Chính sách đãi ngộ Trưởng nhóm, Trưởng phòng 2026 (v4.1) */
+/* Leader quý 4: Trưởng nhóm (Level quản lý) và Trưởng phòng (chỉ tính mốc của manager) */
+const LEADERS=[
+  {u:'hatran02',team:'PRIME',lv:'M1.1'},
+  {u:'truongluu',team:'The Game Changers',lv:'M1.1'},
+  {u:'luanvo',team:'THE FOOLISH',lv:'M1.2'},
+  {u:'kenphan',team:'THE SHARKS',lv:'M1.3'}
+];
+const TEAM_LEADERS=Object.fromEntries(LEADERS.map(x=>[x.team,x.u]));
+const DEPT_MANAGERS={'PKD 3.2 - Be.E':'ngocle','PKD 3.1 - BD Crew':'cuc'};
+const MANAGER_LV={ngocle:'M2.3',cuc:'M2.1'};
+/* Mốc performance Trưởng phòng: theo % hoàn thành commit phòng */
+const TP_PERF=[{p:.5,name:'Under Expectation',c:'#4FD1FF'},{p:.8,name:'Expectation',c:'#FFC94D'},{p:1,name:'Excellent',c:'#F06BD8'}];
+/* Mốc performance Trưởng nhóm: theo tổng doanh thu quý của team (áp dụng mọi Level M1.x) */
+const TN_PERF=[{v:1.2e9,name:'Under Expectation',c:'#4FD1FF'},{v:1.8e9,name:'Expectation',c:'#FFC94D'},{v:2.5e9,name:'Excellent',c:'#F06BD8'}];
+const lvBadge=lv=>`<span class="mvp" style="background:linear-gradient(135deg,#BFDDFF,#8FB8FF)">${lv}</span>`;
+const pctFmt=r=>(r*100).toLocaleString('vi-VN',{minimumFractionDigits:r*100%1?1:0,maximumFractionDigits:2})+'%';
+const hexMark=(x,max,on,color,label,sub)=>`<div class="mk" style="left:${Math.min(100,x/max*100)}%">${hexRing(on?100:0,color,{vb:'0 0 36 40',cx:18,cy:20,r:17,sw:2,fill:on?.9:.7,fillColor:on?color:'#1C2780'})}<b style="color:${on?'#10195A':color}">${label}</b>${sub?`<span>${sub}</span>`:''}</div>`;
+const gchip=(c,html,cls='')=>`<span class="gchip ${cls}" style="--c:${c}"><i></i>${html}</span>`;
+const unitIcon=(txt,cls='')=>`<span class="unit ${cls}">${txt}</span>`;
+const STAR_SVG=`<svg viewBox="-12 -12 24 24"><path d="${star(10)}" fill="#fff"/></svg>`;
+function deptShort(n){const m=String(n).match(/(\d+\.\d+)/);return m?m[1]:initials(n);}
+function staffBy(u){return S.staff.find(s=>String(s.username).toLowerCase()===String(u||'').toLowerCase());}
+function leaderOf(team,members){
+  const tl=members.map(m=>m.teamLeader).find(Boolean);
+  if(tl){const s=S.staff.find(x=>x.email&&x.email.toLowerCase()===String(tl).toLowerCase());if(s)return s;}
+  const u=TEAM_LEADERS[team];return u?staffBy(u):null;
+}
+function extLane({rank,top,whoIcon,name,sub,racer,v,max,marks,ticks,col,valHTML,foot,idx}){
+  const pos=Math.min(100,max?v/max*100:0);
+  return `<div class="lane ext">
+    <div class="who"><span class="rank ${top?'top':''}">${rank}</span>${whoIcon}<div class="who-txt"><b>${name}</b>${sub?`<span>${sub}</span>`:''}</div></div>
+    <div class="track">
+      <div class="rail"></div><div class="rail-fill" style="width:${pos}%;background:linear-gradient(90deg,rgba(255,255,255,0),${col});box-shadow:0 0 10px ${col}"></div>
+      ${ticks||''}${marks}
+      <div class="racer" style="left:${pos}%">${orbitHTML(idx)}${racer}</div>
+    </div>
+    <div class="val">${valHTML}</div>
+    ${foot?`<div class="lane-foot">${foot}</div>`:''}
+  </div>`;
+}
+
+/* 1. Toàn trung tâm (hoặc phòng đang chọn): tiến độ commit, mốc 50/80/100 và Gap */
+
+/* 2. Manager (Trưởng phòng): % commit phòng, mốc 50/80/100 = Under Expectation / Expectation / Excellent
+   3. Leader (Trưởng nhóm): doanh thu quý của team, mốc 1,2 / 1,8 / 2,5 tỷ = Under Expectation / Expectation / Excellent */
+function perfLane({s,lv,sub,v,max,marks,hitName,col,gaps,valSub,idx}){
+  return extLane({rank:'',top:false,whoIcon:avaHTML(s,'sm'),name:esc(s.name)+lvBadge(lv),sub,racer:avaHTML(s),v,max,marks,col,idx,
+    valHTML:`<b>${money(valSub.rev)}</b>${valSub.line?`<span class="p">${valSub.line}</span><br>`:''}<span class="tag" style="color:${col}">${hitName}</span>`,
+    foot:gaps});
+}
+function renderLeaderRace(){
+  const rows=allRows(),cm=curMonth(),mgr=[],out=[];
+  Object.entries(DEPT_MANAGERS).forEach(([dept,u])=>{
+    if(S.dept!=='all'&&S.dept!==dept)return;
+    const s=staffBy(u);if(!s)return;
+    const v=rows.filter(r=>r.dept===dept).reduce((a,r)=>a+r.q,0),t=commitTarget(dept)||CONFIG.DEPT_TARGETS[dept]||0,p=t?v/t:0;
+    const hit=[...TP_PERF].reverse().find(x=>p>=x.p),nx=TP_PERF.find(x=>p<x.p),col=hit?hit.c:'#A9B8F5';
+    const marks=TP_PERF.map(x=>hexMark(x.p,1.12,p>=x.p,x.c,Math.round(x.p*100)+'%',x.name)).join('');
+    const gaps=TP_PERF.map(x=>{const g=t*x.p-v;return g>0?gchip(x.c,`${x.name} <strong>${money(g)}</strong>`):gchip(x.c,`${x.name} <strong>đạt</strong>`,'ok');}).join('');
+    mgr.push(perfLane({s,lv:MANAGER_LV[u]||'Manager',sub:'',v:p,max:1.12,marks,hitName:hit?hit.name:'At Risk',col,gaps,idx:mgr.length+5,
+      valSub:{rev:v,line:`${pctTxt(p*100)} commit`,next:''}}));
+  });
+  const maxV=Math.max(2.8e9,...LEADERS.map(L=>rows.filter(r=>r.team===L.team).reduce((a,r)=>a+r.q,0)*1.08));
+  LEADERS.forEach(L=>{
+    const s=staffBy(L.u);if(!s)return;
+    if(S.dept!=='all'&&s.dept!==S.dept)return;
+    const mem=rows.filter(r=>r.team===L.team),v=mem.reduce((a,r)=>a+r.q,0),mv=mem.reduce((a,r)=>a+(r.m[cm]||0),0);
+    const hit=[...TN_PERF].reverse().find(x=>v>x.v),nx=TN_PERF.find(x=>v<=x.v),col=hit?hit.c:'#A9B8F5';
+    const marks=TN_PERF.map(x=>hexMark(x.v,maxV,v>x.v,x.c,money(x.v).replace(' tỷ','T'),x.name)).join('');
+    const mHit=TEAM_MS.find(([th])=>mv>=th),mNext=[...TEAM_MS].reverse().find(([th])=>mv<th);
+    const gaps=[...TN_PERF.map(x=>v>x.v?gchip(x.c,`${x.name} <strong>đạt</strong>`,'ok'):gchip(x.c,`${x.name} <strong>${money(x.v-v)}</strong>`)),
+      gchip('#FFC94D',mHit?`Thưởng T${cm} <strong>+${nf.format(mHit[1])}</strong>`:`Thưởng T${cm} còn <strong>${money(5e8-mv)}</strong>`,'aw')].join('');
+    out.push(perfLane({s,lv:L.lv,sub:esc(L.team),v,max:maxV,marks,hitName:hit?hit.name:'At Risk',col,gaps,idx:s.idx??out.length,
+      valSub:{rev:v,line:'',next:''}}));
+  });
+  $('#mgrRace').innerHTML=mgr.join('')||'<p class="empty">Không có manager trong phòng đang chọn.</p>';
+  $('#leaderRace').innerHTML=out.join('')||'<p class="empty">Không có leader trong phòng đang chọn.</p>';
+}
+
 function render(){
   if(S.page!=='bonus'){S.dirty=true;return;}
   S.dirty=false;
   const rows=compute();
-  renderControls();renderCommit();renderHero(rows);renderRace(rows);renderAwards();
+  renderControls();renderCommit();renderHero(rows);renderLeaderRace();renderRace(rows);renderAwards();
   S.first=false;
 }
 
@@ -1288,6 +1440,7 @@ document.addEventListener('click',e=>{
   else if(b.closest('#kamMore')){K.limit+=60;renderKamList();}
 });
 $('#lvSel').addEventListener('change',e=>{S.lv=e.target.value||'all';renderRace(compute());});
+document.addEventListener('click',e=>{const tr=e.target.closest('tr[data-cdept]');if(!tr)return;S.cClosed=S.cClosed||{};const k=tr.dataset.cdept;S.cClosed[k]=!S.cClosed[k];renderCommit();});
 $('#btnRefresh').onclick=()=>S.page==='kam'?loadKam(undefined,true):load(true);
 $('#kamForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#kamEmail').value.trim().toLowerCase();if(v)loadKam(v,false);});
 let qT;
